@@ -20,6 +20,11 @@ resource "aws_instance" "clickhouse_instace" {
     destination = "/tmp/install_clickhouse.sh"
   }
 
+  provisioner "file" {
+    source      = "../docker-compose"
+    destination = "~/"
+  }
+
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/install_clickhouse.sh",
