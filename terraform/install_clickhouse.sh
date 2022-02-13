@@ -13,6 +13,6 @@ fi
 
 sudo usermod -aG docker $USER
 
-wget -q ${DOCKER_COMPOSE_LINK}
+wget -q ${DOCKER_COMPOSE_URL}
 
 sudo docker-compose up -d
