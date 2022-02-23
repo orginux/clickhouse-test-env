@@ -10,7 +10,7 @@ UserID UInt64,
 ENGINE = CollapsingMergeTree(Sign)
 ORDER BY UserID;
 
-CREATE IF NOT EXISTS TABLE collaps.UAct_order
+CREATE TABLE IF NOT EXISTS collaps.UAct_order
 (
     UserID UInt64,
     PageViews UInt8,
