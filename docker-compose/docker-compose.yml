@@ -11,7 +11,7 @@ services:
         networks:
             - ch-net
         volumes:
-            - ${PWD}/config/admin.xml:/etc/clickhouse-server/users.d/admin.xml
+            - /home/ec2-user/docker-compose/config/admin.xml:/etc/clickhouse-server/users.d/admin.xml
 
 networks:
     ch-net:
