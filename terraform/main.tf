@@ -1,18 +1,18 @@
 provider "aws" {
-  region = "eu-north-1"
+  region = "eu-central-1"
 }
 
 resource "aws_instance" "clickhouse_instace" {
-  ami                    = "ami-04989fe7f688013eb"
-  instance_type          = "t3.micro"
-  key_name               = "eu-north-1"
-  vpc_security_group_ids = ["sg-0c369e68733470e29"]
+  ami                    = "ami-02930a5921348d135"
+  instance_type          = "t2.micro"
+  key_name               = "aws-frankfurt"
+  vpc_security_group_ids = ["sg-07dbecaf0f8707dd5"]
 
   connection {
     host        = coalesce(self.public_ip, self.private_ip)
     type        = "ssh"
     user        = "ec2-user"
-    private_key = file(pathexpand("~/.ssh/aws/eu-north-1.pem"))
+    private_key = file(pathexpand("~/.ssh/aws/aws-frankfurt.pem"))
   }
 
   provisioner "file" {
@@ -22,7 +22,7 @@ resource "aws_instance" "clickhouse_instace" {
 
   provisioner "file" {
     source      = "../docker-compose"
-    destination = "~/"
+    destination = "/home/ec2-user/"
   }
 
   provisioner "remote-exec" {
